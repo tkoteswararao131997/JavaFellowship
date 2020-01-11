@@ -1,0 +1,15 @@
+package com.bridgelabz.AlgorithPrograms;
+
+import java.util.ArrayList;
+
+import com.bridgelabz.utility.UtilityLogics;
+import com.bridgelabz.utility.UtilityScanner;
+
+public class PrimeAnagramPalindrome 
+{
+	public static void main(String[] args) 
+	{
+		int n=UtilityScanner.readInteger();
+		int[] l=UtilityLogics.primerange(n);
+	}
+}
