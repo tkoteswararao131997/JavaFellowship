@@ -898,5 +898,104 @@ public static String[] insertionsort(String[] s)
 		
 		return result;
 	}
+
+	public static int dayofweek(int d, int m, int y) 
+	{
+				int y0 = y -(14 - m) / 12;
+				int x = y0 + y0/4 - y0/100 + y0/400;
+				int m0 = m + 12 *((14 - m) / 12)- 2;
+				int d0 = (d + x + 31*m0 / 12)%7;
+
+		return d0;
+	}
+
+	public static double temperature(double f) 
+	{
+		double c=(f-32)*5/9; 
+		return c;
+	}
+
+	public static double monthlypayment(double p, double y, double r) 
+	{
+		
+		double payment=(p*r)/(1-Math.pow((1+r), -(12*y)));
+		return payment;
+	}
+
+	public static double squareroot(double t) 
+	{
+		double c=t;
+		t=(c/t *t)/2;
+		double val=Math.abs(t-c/t);
+		double epsilon=8.8541878128*13*Math.pow(10, -12)*t;
+		System.out.println("epsilon:"+epsilon);
+		while(val>epsilon)
+		{
+			c=t;
+			t=(c/t *t)/2;
+			val=Math.abs((t-(c/t)));
+			System.out.println("val"+val);
+		}
+		
+		return val;
+	}
+
+	public static String tobinary(int num) 
+	{
+		String s="";
+		while(num>=1)
+		{
+			s=Integer.toString(num%2)+s;
+			num=num/2;                                                   
+		}
+		return s;
+	}
+
+	public static int binaryNibbles(int num) 
+	{
+		String s1="",s2="";
+		String s=tobinary(num);
+		if(s.length()<8)
+		{
+			int i=s.length();
+			while(i!=8)
+			{
+				s=0+s;
+				i++;
+			}
+		}
+		for (int i = 0; i < s.length(); i++) 
+		{
+			if(i<4)
+				s1=s1+s.charAt(i);
+			else
+			s2=s2+s.charAt(i);
+			
+		}
+		s=s2+s1;
+		System.out.println(s);
+		int count=0,total=0;
+		for(int i=s.length()-1;i>0;i--)
+		{
+			int mul=1;
+			count++;
+			
+			if(s.charAt(i)=='1' && i==0)
+			{
+				total=1;
+			}
+			else if(s.charAt(i)=='1')
+			{
+				int j=1;
+				while(j<count)
+				{
+					mul=mul*2;
+					j++;
+				}
+				total=total+mul;
+			}
+		}
+		return total;
+	}
 }
 
