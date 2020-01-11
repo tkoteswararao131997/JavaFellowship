@@ -1,20 +1,28 @@
 
 package com.bridgelabz.utility;
 import java.util.*;
-/**
+/**Writing all my logics of all classes in this class
  * 
- * @author PREM
+ * @author KOTI
  * 
  */
 public class UtilityLogics {
-	// String replace logic
+	/**
+	 * by using this method we can call user
+	 * parameters:String
+	 * return String
+	 */
 	public static String replaceString(String str) {
 		String original = "Hello <<username>>,how are you";
 		original = original.replace("<<username>>", str);
 		return original;
 	}
 
-	// Flipcoin logic
+	/**
+	 * calculating the head by tail percentage
+	 * @param flips
+	 * @return double per
+	 */
 	public static double flipcoinper(int flips) {
 		double heads = 0, tails = 0;
 		while (flips > 0) {
@@ -31,7 +39,11 @@ public class UtilityLogics {
 		return per;
 	}
 
-	// Leap year Logic
+	/**
+	 * check whether the given year is leap year or not
+	 * @param year
+	 * @return boolean year 
+	 */
 	public static boolean isLeapYear(int year) {
 		if (year % 400 == 0 || year % 4 == 0 && year % 100 != 0) {
 			return true;
@@ -39,7 +51,11 @@ public class UtilityLogics {
 		return false;
 	}
 
-	// power of 2 logic
+	/**
+	 * calculating the power of 2
+	 * @param pow
+	 * @return power value
+	 */
 	public static long powerof2(int pow) {
 		long mul = 1;
 		while (pow > 0) {
@@ -49,7 +65,11 @@ public class UtilityLogics {
 		return mul;
 	}
 
-	// Harmonic logic
+	/**
+	 * find the harmonic range for particular number
+	 * @param range
+	 * @return harmonic range
+	 */
 	public static double harmonic(int range) {
 		double harmonic = 0.0;
 		while (range > 0) {
@@ -59,7 +79,11 @@ public class UtilityLogics {
 		return harmonic;
 	}
 
-	// Prime Factarization logic
+	/**
+	 * find the prime factors for the number
+	 * @param n
+	 * @return l which stores prime values
+	 */
 	public static ArrayList<Integer> primefactorization(int n) {
 		ArrayList<Integer> l = new ArrayList<Integer>();
 		while (n > 1) {
@@ -74,8 +98,14 @@ public class UtilityLogics {
 		return l;
 	}
 
-	// Gambler logic
-	public static HashMap<String, Object> gambler(int stake, int goal) {
+	/**
+	 * find win percentage wins and loss percentage based upon the stake and goal
+	 * @param stake
+	 * @param goal
+	 * @return wins,winper,lossper through Hashmap
+	 */
+	public static HashMap<String, Object> gambler(int stake, int goal) 
+	{
 		HashMap<String, Object> l = new HashMap();
 		double wins = 0, losses = 0, fairs = 0;
 		while (stake != 0 && goal != stake) {
@@ -98,8 +128,14 @@ public class UtilityLogics {
 		return l;
 	}
 
-	// PrintWritter logic
-	public static int[][] array2D(int rows, int cols) {
+	/**
+	 * printwriter 2D array
+	 * @param rows
+	 * @param cols
+	 * @return 2D array
+	 */
+	public static int[][] array2D(int rows, int cols)
+	{
 		int a[][] = new int[rows][cols];
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
@@ -109,7 +145,11 @@ public class UtilityLogics {
 		return a;
 	}
 
-	// coupon Numbers logic
+	/**
+	 * find n no.of steps for finding N distinct coupon numbers
+	 * @param N
+	 * @return n means count
+	 */
 	public static int randomCoupons(int N) {
 		int count = 0;
 		Random r = new Random();
@@ -137,13 +177,22 @@ public class UtilityLogics {
 		return count;
 	}
 
-	// distance logic
+	/**
+	 * find the distance
+	 * @param x
+	 * @param y
+	 * @return distance
+	 */
 	public static double distance(double x, double y) {
 		double distance = Math.pow((x * x + y * y), 0.5);
 		return distance;
 	}
 
-	// sum of three elements should be zero
+	/**
+	 * sum of three numbers in an array
+	 * @param a
+	 * @return sum numbers through ArrayList
+	 */
 	public static ArrayList<Integer> sumOfThree(int a[]) {
 		ArrayList<Integer> l = new ArrayList<Integer>();
 		for (int i = 0; i < a.length; i++) {
@@ -160,19 +209,26 @@ public class UtilityLogics {
 		return l;
 	}
 
-	// Easy Purpose
+	/**
+	 * taking values for array through dynamic manner
+	 * @return array
+	 */
 	public static int[] randomArray() {
 		int n = UtilityScanner.readInteger();
 		int a[] = new int[n];
-		for (int i = 0; i < a.length; i++) {
+		for (int i = 0; i < a.length; i++) 
+		{
 			a[i] = UtilityScanner.readInteger();
 		}
 		return a;
 	}
-
-	
-
-	// Quadratic equation root1
+	/**
+	 * find the roots for the quadratic equation
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @return root
+	 */
 	public static double quadraticroot1(int a, int b, int c) {
 		double root1 = 0.0;
 		double delta = b * b - 4 * a * c;
@@ -184,8 +240,13 @@ public class UtilityLogics {
 		return root1;
 
 	}
-
-	// Quadratic equation 2
+	/**
+	 * find roots for quadratic equation
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @return root2
+	 */
 	public static double quadraticroot2(int a, int b, int c) {
 		double root2 = 0.0;
 		double delta = b * b - 4 * a * c;
@@ -197,15 +258,23 @@ public class UtilityLogics {
 		return root2;
 
 	}
-
-	// WindChill logic
+	/**
+	 * findng the value for windchill based upon the temperature an spedd values
+	 * @param t
+	 * @param v
+	 * @return double value for windchill
+	 */
 	public static double windchill(double t, double v) {
 		double w = 35.74 + 0.6215 + (0.4275 * t - 35.75) * Math.pow(v, 0.16);
 		return w;
 
 	}
-
-	// StopWatch logic
+	/**
+	 * find difference between two timings
+	 * @param StartTime
+	 * @param EndTime
+	 * @return diff time
+	 */
 	public static String stowatch(String StartTime, String EndTime) {
 		String sh = "", sm = "", ss = "";
 		for (int i = 0; i < StartTime.length(); i++) {
@@ -219,7 +288,6 @@ public class UtilityLogics {
 				ss = ss + StartTime.charAt(i);
 			}
 		}
-		// System.out.println(sh+" "+sm+" "+ss);
 		int shrs = Integer.parseInt(sh) * 3600;
 		int smins = Integer.parseInt(sm) * 60;
 		int ssecs = Integer.parseInt(ss);
@@ -236,23 +304,20 @@ public class UtilityLogics {
 				es = es + EndTime.charAt(i);
 			}
 		}
-		// System.out.println(eh+" "+em+" "+es);
 		int ehrs = Integer.parseInt(eh) * 3600;
 		int emins = Integer.parseInt(em) * 60;
 		int esecs = Integer.parseInt(es);
-		System.out.println(ehrs + " " + emins + " " + esecs);
 		int totale = ehrs + emins + esecs;
-		System.out.println(totale);
 		int diff = Math.abs(totals - totale);
-		// System.out.println(diff);
 		int diffhrs = diff / 3600;
 		int diffmins = (diff % 3600) / 60;
 		int diffsecs = (diff % 60);
 		String difference = diffhrs + ":" + diffmins + ":" + diffsecs;
 		return difference;
 	}
-
-	// TicTacToe Logic
+	/**
+	 * Tic Tac Toe which is used to find who is the winner user or system
+	 */
 	public static void tictactoe() 
 	{
 		char game[][]=new char[3][3];
@@ -308,6 +373,11 @@ public class UtilityLogics {
 		display(game);
 		
 	}
+	/**
+	 * tictactoe diagonal checking
+	 * @param game
+	 * @return boolean value
+	 */
 	private static boolean checkdiag(char[][] game)
 	{
 		int rud=0,rcd=0,lud=0,lcd=0;
@@ -332,16 +402,15 @@ public class UtilityLogics {
 				}
 			}
 		}
-		//System.out.println(lud+" "+lcd);
 		if(rud==3 || rcd==3 || lud==3 || lcd==3)
 			return true;
 		return false;
 	}
 
 	/**
-	 * 
+	 * tictactoe column checking
 	 * @param game
-	 * @return 
+	 * @return boolean value
 	 */
 	private static boolean checkcol(char[][] game) 
 	{
@@ -364,8 +433,11 @@ public class UtilityLogics {
 		}
 		return false;
 	}
-
-	//tictac row check
+	/**
+	 * tictactoe ro checking
+	 * @param game
+	 * @return boolean value
+	 */
 	private static boolean checkrow(char[][] game) 
 	{
 		for (int i = 0; i < game.length; i++) 
@@ -383,7 +455,10 @@ public class UtilityLogics {
 		}
 			return false;
 	}
-	//2D dispaly
+	/**
+	 * diaplay an array
+	 * @param game
+	 */
 	private static void display(char[][] game) 
 	{
 		for (int i = 0; i < game.length; i++) 
@@ -395,7 +470,12 @@ public class UtilityLogics {
 			System.out.println();
 		}
 	}
-	//word recursion logic
+	/**
+	 * find all permutations of a word through recursion
+	 * @param word
+	 * @param start
+	 * @param end
+	 */
 	 public static void recursionWords(String word, int start, int end) 
 	 {
 		 if(start==end)
@@ -411,7 +491,13 @@ public class UtilityLogics {
 			 }
 		 }
 	}
-	 //swap logic
+	/**
+	 * swaping condition for recursion words
+	 * @param word
+	 * @param start
+	 * @param i
+	 * @return string word
+	 */
 	private static String swap(String word, int start, int i)
 	{
 		char temp;
@@ -421,7 +507,11 @@ public class UtilityLogics {
 		a[i]=temp;
 		return String.valueOf(a);
 	}
-	//word iteration logic
+	/**
+	 * find all permutations of a word through iteartion
+	 * @param word
+	 * @return string[] with words
+	 */
 	public static String[] iterateWords(String word) 
 	{
 		char a[]=word.toCharArray();
@@ -467,6 +557,7 @@ public class UtilityLogics {
 	 * @param input
 	 * @param j 
 	 * @param i 
+	 * return boolean value of word present or not
 	 */
 
 	public static boolean fileBinarySearch(String[] words, String input, int i, int j) 
@@ -484,9 +575,9 @@ public class UtilityLogics {
 		return false;
 	}
 	/**
-	 * 
+	 * sort the words using insertion sort technique
 	 * @param s
-	 * @return
+	 * @return string[] words after sorting
 	 */
 public static String[] insertionsort(String[] s) 
 {
@@ -532,7 +623,12 @@ public static String[] insertionsort(String[] s)
 		
 	return s;
 }
-
+	/**
+	 * swap characters
+	 * @param s
+	 * @param j
+	 * @return string[] after swap the characters
+	 */
 	private static String[] swap(String[] s, int j) 
 	{
 		String temp=s[j];
@@ -540,7 +636,10 @@ public static String[] insertionsort(String[] s)
 		s[j-1]=temp;
 		return s;
 	}
-
+	/**
+	 * print string array
+	 * @param s
+	 */
 	public static void display(String[] s) 
 	{
 		for (int i = 0; i < s.length; i++) 
@@ -549,7 +648,11 @@ public static String[] insertionsort(String[] s)
 		}
 		
 	}
-
+	/**
+	 * sort the numbers using bubble sort
+	 * @param nums
+	 * @return integer []
+	 */
 	public static int[] bubbleSort(int[] nums) 
 	{
 		for (int i = 0; i < nums.length; i++) 
@@ -565,7 +668,12 @@ public static String[] insertionsort(String[] s)
 		
 		return nums;
 	}
-
+	/**
+	 * swap nums
+	 * @param nums
+	 * @param j
+	 * @return integer[] after swaping
+	 */
 	private static int[] swap(int[] nums, int j)
 	{
 		int temp=nums[j+1];
@@ -573,7 +681,10 @@ public static String[] insertionsort(String[] s)
 		nums[j]=temp;
 		return nums;
 	}
-
+	/**
+	 * print number array
+	 * @param nums
+	 */
 	public static void iterateArray(int[] nums) 
 	{
 		for (int i = 0; i < nums.length; i++)
@@ -582,7 +693,12 @@ public static String[] insertionsort(String[] s)
 		}
 		
 	}
-
+	/**
+	 * used for mergesort to divide the array into single element
+	 * @param s
+	 * @param start
+	 * @param end
+	 */
 	public static void divide(String[] s, int start, int end) 
 	{
 		if(start<end)
@@ -594,7 +710,13 @@ public static String[] insertionsort(String[] s)
 			merge(s,start,mid,end);
 		}
 	}
-
+	/**
+	 * used in mergesort for combining the elements 
+	 * @param s
+	 * @param start
+	 * @param mid
+	 * @param end
+	 */
 	private static void merge(String[] s, int start, int mid, int end) 
 	{
 		int n1=mid-start+1;
@@ -665,7 +787,12 @@ public static String[] insertionsort(String[] s)
 		}
 		
 	}
-
+	/**
+	 * check whether the two strings are palindrome are not
+	 * @param s1
+	 * @param s2
+	 * @return true or false
+	 */
 	public static boolean isAnagram(String s1, String s2) 
 	{
 		if(s1.length()!=s2.length())
@@ -713,7 +840,11 @@ public static String[] insertionsort(String[] s)
 		}
 		return true;
 	}
-
+	/**
+	 * print the prime numbers based upon the range
+	 * @param n
+	 * @return prime integers []
+	 */
 	public static int[] primerange(int n) 
 	{
 		ArrayList<Integer> l=new ArrayList<Integer>();
@@ -735,14 +866,21 @@ public static String[] insertionsort(String[] s)
 		}
 		return primes;
 	}
-
+	/**
+	 * display integer array
+	 * @param primes
+	 */
 	public static void display(int[] primes) 
 	{
 		for (int j = 0; j < primes.length; j++) {
 			System.out.print(primes[j]+" ");	
 		}
 	}
-
+	/**
+	 * find the primenumbers which are palindrome and anagram
+	 * @param n
+	 * @return arraylist[]
+	 */
 	public static ArrayList primeanapali(int n) 
 	{
 		boolean ba=false,bp=false;
@@ -764,7 +902,12 @@ public static String[] insertionsort(String[] s)
 		}
 		return l;
 	}
-
+	/**
+	 * used for checking palindrome or not for two numbers
+	 * @param i
+	 * @param j
+	 * @return true or false
+	 */
 	private static boolean ispalindrome(int i, int j)
 	{
 		int mul=0;
@@ -780,7 +923,12 @@ public static String[] insertionsort(String[] s)
 		}
 		return false;
 	}
-
+	/**
+	 * used to check two numbers are anagram or not
+	 * @param n1
+	 * @param n2
+	 * @return true or false
+	 */
 	private static boolean isAnagramInt(int n1, int n2) 
 	{
 		ArrayList l1=new ArrayList();
@@ -819,14 +967,24 @@ public static String[] insertionsort(String[] s)
 		}
 		return true;
 	}
-
+	/**
+	 * guess the user number continuosly upto the user number is correct
+	 * @param n
+	 * @return number
+	 */
 	public static int guessNumber(int n) 
 	{
 		int telling=0;
 		int result=binarysearchnum(telling,0,n);
 		return result;
 	}
-
+	/**
+	 * used to search the guess number
+	 * @param telling
+	 * @param start
+	 * @param end
+	 * @return integer
+	 */
 	public static int binarysearchnum(int telling,int start,int end) 
 	{
 		if(start<end)
@@ -855,7 +1013,10 @@ public static String[] insertionsort(String[] s)
 		}
 		return -1;
 	}
-
+	/**
+	 * replace the text with name and mobilenumber
+	 * @return replaced text
+	 */
 	public static String messageForm()
 	{
 		String original="Hello <<name>>, We have your full name as <<full name>> in our system.your contact number is 91-xxxxxxxxxx."+
@@ -870,7 +1031,12 @@ public static String[] insertionsort(String[] s)
 		original=original.replace("01/01/2016", date);
 		return original;
 	}
-
+	/**
+	 * check how many notes required for the given money
+	 * @param notes
+	 * @param amount
+	 * @return notes
+	 */
 	public static long vendingmachine(int[] notes,long amount) 
 	{
 		
@@ -889,7 +1055,7 @@ public static String[] insertionsort(String[] s)
 					i=0;
 				}
 				System.out.println("remaining amount:"+amount);
-				result=numnotes+result;
+				result=numnotes+result+1;
 			}
 			else
 				count--;
@@ -898,7 +1064,13 @@ public static String[] insertionsort(String[] s)
 		
 		return result;
 	}
-
+	/**
+	 * print the day of the week
+	 * @param d
+	 * @param m
+	 * @param y
+	 * @return integer of the day
+	 */
 	public static int dayofweek(int d, int m, int y) 
 	{
 				int y0 = y -(14 - m) / 12;
@@ -908,20 +1080,34 @@ public static String[] insertionsort(String[] s)
 
 		return d0;
 	}
-
+	/**
+	 * convert fareinheit to celsius
+	 * @param f
+	 * @return celsius value
+	 */
 	public static double temperature(double f) 
 	{
 		double c=(f-32)*5/9; 
 		return c;
 	}
-
+	/**
+	 * print monthly payment of the principle
+	 * @param p
+	 * @param y
+	 * @param r
+	 * @return payment in double
+	 */
 	public static double monthlypayment(double p, double y, double r) 
 	{
 		
 		double payment=(p*r)/(1-Math.pow((1+r), -(12*y)));
 		return payment;
 	}
-
+	/**
+	 * find squareroot of a number
+	 * @param t
+	 * @return rootvalue in double
+	 */
 	public static double squareroot(double t) 
 	{
 		double c=t;
@@ -939,7 +1125,11 @@ public static String[] insertionsort(String[] s)
 		
 		return val;
 	}
-
+	/**
+	 * convert decimal to binary
+	 * @param num
+	 * @return binary in string
+	 */
 	public static String tobinary(int num) 
 	{
 		String s="";
@@ -950,7 +1140,11 @@ public static String[] insertionsort(String[] s)
 		}
 		return s;
 	}
-
+	/**
+	 * find binarynibble value
+	 * @param num
+	 * @return integer of that binarynibble
+	 */
 	public static int binaryNibbles(int num) 
 	{
 		String s1="",s2="";
