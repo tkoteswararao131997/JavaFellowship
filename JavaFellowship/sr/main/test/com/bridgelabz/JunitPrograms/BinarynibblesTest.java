@@ -6,29 +6,27 @@ import org.junit.jupiter.api.Test;
 
 import com.bridgelabz.utility.UtilityLogics;
 
-class VendorMachinetest 
-{
-	int notes[]= {1,2,5,10,50,100,500,1000};
+class BinarynibblesTest {
+
 	@Test
 	void test() 
 	{
 		UtilityLogics u=new UtilityLogics();
-		long vendor=u.vendingmachine(notes,3678);
-		assertEquals(11,vendor);
+		int n=u.binaryNibbles(100);
+		assertEquals(70,n);
 	}
 	@Test
 	void test1() 
 	{
 		UtilityLogics u=new UtilityLogics();
-		long vendor=u.vendingmachine(notes,0);
-		assertEquals(0,vendor);
+		int n=u.binaryNibbles(7);
+		assertEquals(112,n);
 	}
 	@Test
 	void test2() 
 	{
 		UtilityLogics u=new UtilityLogics();
-		long vendor=u.vendingmachine(notes,1087);
-		assertEquals(7,vendor);
+		int n=u.binaryNibbles(0);
+		assertEquals(0,n);
 	}
-
 }

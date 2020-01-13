@@ -7,7 +7,7 @@ public class VendingMachine
 {
 	public static void main(String[] args)
 	{
-		int notes[]= {1,2,5,10,50,100,500,2000};
+		int notes[]= {1,2,5,10,50,100,500,1000};
 		long amount=UtilityScanner.readInteger();
 		long numnotes=UtilityLogics.vendingmachine(notes,amount);
 		System.out.println(numnotes);

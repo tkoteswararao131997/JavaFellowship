@@ -6,29 +6,30 @@ import org.junit.jupiter.api.Test;
 
 import com.bridgelabz.utility.UtilityLogics;
 
-class VendorMachinetest 
-{
-	int notes[]= {1,2,5,10,50,100,500,1000};
+class PaymentTest {
+
 	@Test
 	void test() 
 	{
 		UtilityLogics u=new UtilityLogics();
-		long vendor=u.vendingmachine(notes,3678);
-		assertEquals(11,vendor);
+		double payment=u.monthlypayment(4200, 2, 3);
+		assertEquals(180.52109031413946,payment);
 	}
 	@Test
 	void test1() 
 	{
 		UtilityLogics u=new UtilityLogics();
-		long vendor=u.vendingmachine(notes,0);
-		assertEquals(0,vendor);
+		double payment=u.monthlypayment(35000, 5, 6);
+		assertEquals(676.6480535299896,payment);
 	}
 	@Test
 	void test2() 
 	{
 		UtilityLogics u=new UtilityLogics();
-		long vendor=u.vendingmachine(notes,1087);
-		assertEquals(7,vendor);
+		double payment=u.monthlypayment(1,1,0.1);
+		assertEquals(0.08337847911804976,payment);
 	}
+	
+
 
 }

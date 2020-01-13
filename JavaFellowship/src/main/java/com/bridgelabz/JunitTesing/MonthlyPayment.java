@@ -7,10 +7,10 @@ public class MonthlyPayment
 {
 	public static void main(String[] args) 
 	{
-		double p=UtilityScanner.readDouble();
-		double y=UtilityScanner.readDouble();
-		double r=UtilityScanner.readDouble();
-		double result=UtilityLogics.monthlypayment(p,y,r);
+		double P=UtilityScanner.readDouble();
+		double Y=UtilityScanner.readDouble();
+		double R=UtilityScanner.readDouble();
+		double result=UtilityLogics.monthlypayment(P,Y,R);
 		System.out.println(result);
 	}
 }

@@ -1046,21 +1046,17 @@ public static String[] insertionsort(String[] s)
 			if(amount>=notes[count])
 			{
 				numnotes=amount/notes[count];
-				System.out.println(notes[count]+" "+numnotes);
 				amount=amount%notes[count];
 				if(amount<50 && i!=0)
 				{
 					change=amount;
 					i=0;
 				}
-				System.out.println("remaining amount:"+amount);
-				result=numnotes+result+1;
+				result=result+numnotes;
 			}
 			else
 				count--;
 		}
-		System.out.println("change:"+change);
-		
 		return result;
 	}
 	/**
@@ -1096,10 +1092,13 @@ public static String[] insertionsort(String[] s)
 	 * @param r
 	 * @return payment in double
 	 */
-	public static double monthlypayment(double p, double y, double r) 
+	public static double monthlypayment(double P, double Y, double R) 
 	{
-		
-		double payment=(p*r)/(1-Math.pow((1+r), -(12*y)));
+		double n=12*Y;
+		double r=R/(12*100);
+		double a=P*r;
+		double b=Math.pow((1+r),-n);
+		double payment=a/(1-b);
 		return payment;
 	}
 	/**
