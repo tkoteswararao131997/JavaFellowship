@@ -33,7 +33,6 @@ public class UtilityLogics {
 				tails++;
 			}
 			flips--;
-			System.out.println("val:" + val + "heads:" + heads + "trails:" + tails + "flips" + flips);
 		}
 		double per = (heads / tails) * 100;
 		return per;
