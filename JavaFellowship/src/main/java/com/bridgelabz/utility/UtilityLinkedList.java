@@ -88,4 +88,18 @@ public class UtilityLinkedList
 		String s=n.data;
 		return s+" ";
 	}
+	public void insertAt(String s, UtilityLinkedList l,int num) 
+	{
+		UtilityLinkedList n= ;
+		n.data=s;
+		int i=0;
+		while(n!=null)
+		{
+			if(s.charAt(i)<n.data.charAt(i))
+			{
+				
+			}
+				
+		}
+	}
 }
