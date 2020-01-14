@@ -85,21 +85,40 @@ public class UtilityLinkedList
 			n=n.next;
 			num++;
 		}
+		System.out.println(n.data);
 		String s=n.data;
 		return s+" ";
 	}
 	public void insertAt(String s, UtilityLinkedList l,int num) 
 	{
-		UtilityLinkedList n= ;
-		n.data=s;
-		int i=0;
-		while(n!=null)
+		UtilityLinkedList node=new UtilityLinkedList();
+		int j=0;
+		node.data=s;
+		if(head==null)
 		{
-			if(s.charAt(i)<n.data.charAt(i))
+			node.next=head;
+			head=node;
+		}
+		else if((int)s.charAt(j)<=head.data.charAt(j) )
+		{
+			node.next=head;
+			head=node;
+		}
+			
+		else
+		{
+			UtilityLinkedList n=head;
+			while(n.next!=null)
 			{
-				
+				if((int)s.charAt(j)<(int)n.next.data.charAt(j))
+				{
+					break;
+				}
+				n=n.next;
 			}
-				
+			node.next=n.next;
+			n.next=node;
+			
 		}
 	}
 }
