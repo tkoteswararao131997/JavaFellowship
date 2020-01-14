@@ -1,6 +1,5 @@
 package com.bridgelabz.utility;
-
-public class UtilityStack 
+public class UtilityStackArray 
 {
 	char a[]=new char[10];
 	int top=0;
@@ -21,6 +20,7 @@ public class UtilityStack
 		if(isEmpty()==true)
 		{
 			System.out.println("stack is empty");
+			top--;
 		}
 		else
 		{

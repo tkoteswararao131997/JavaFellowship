@@ -4,6 +4,7 @@ public class UtilityLinkedList
 	UtilityLinkedList head;
 	UtilityLinkedList next;
 	String data;
+	char ch;
 	public  UtilityLinkedList insert(String s)
 	{
 		UtilityLinkedList node=new UtilityLinkedList();
@@ -121,4 +122,57 @@ public class UtilityLinkedList
 			
 		}
 	}
+	/**
+	 * LinkedList methods for char
+	 * @param c
+	 */
+	public void insertchar(char c)
+	{
+		UtilityLinkedList node=new UtilityLinkedList();
+		node.ch=c;
+		if(head==null)
+		{
+			head=node;
+		}
+		else
+		{
+			UtilityLinkedList n=head;
+			while(n.next!=null)
+			{
+				n=n.next;
+			}
+			n.next=node;
+		}
+	}
+	public void displaychar(UtilityLinkedList node)
+	{
+		UtilityLinkedList n=head;
+		while(n!=null)
+		{
+			System.out.print(n.ch+" ");
+			n=n.next;
+		}
+	}
+	public char getchar(UtilityLinkedList l, int i)
+	{
+		UtilityLinkedList n=head;
+		int num=0;
+		while(num!=i)
+		{
+			n=n.next;
+			num++;
+		}
+		char ch=n.ch;
+		return ch;
+	}
+	public void deletechar()
+	{
+		UtilityLinkedList n=head;
+		while(n.next!=null)
+		{
+			n=n.next;
+		}
+		
+	}
+	
 }

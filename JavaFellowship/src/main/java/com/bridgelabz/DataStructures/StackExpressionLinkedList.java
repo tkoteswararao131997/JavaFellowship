@@ -1,15 +1,15 @@
 package com.bridgelabz.DataStructures;
 
 import com.bridgelabz.utility.UtilityLinkedList;
-import com.bridgelabz.utility.UtilityStackArray;
+import com.bridgelabz.utility.UtilityStackLinkedList;
 
-public class StackExpression
+public class StackExpressionLinkedList
 {
 	public static void main(String[] args) 
 	{
-		String exp="(5+6)∗(7+8) /(((4+3))(5+6)∗(7+8)/(4+3)"; 
-		UtilityStackArray s=new UtilityStackArray();
+		String exp="(5+6)∗(7+8) /(((4+3))(5+6)∗(7+8)/(4+3)";
 		UtilityLinkedList l=new UtilityLinkedList();
+		UtilityStackLinkedList s=new UtilityStackLinkedList();
 		int i=0;
 		for(i=0;i<exp.length();i++)
 		{
@@ -18,14 +18,10 @@ public class StackExpression
 				s.push(exp.charAt(i));
 			if(l.getchar(l, i)==')')
 				s.pop();
+			s.show();
 			if(s.size()==-1)
 				break;
 		}
-		boolean b=s.isEmpty();
-		if(b==true && i==exp.length())
-			System.out.println("true");
-		else
-			System.out.println("false");
 		
 	}
 }
