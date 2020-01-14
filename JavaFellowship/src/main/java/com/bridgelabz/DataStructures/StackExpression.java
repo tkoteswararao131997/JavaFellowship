@@ -6,10 +6,11 @@ public class StackExpression
 {
 	public static void main(String[] args) 
 	{
-		String exp="(5+6)*(7+8)/()4+3)(5+6)*(7+8)/(4+3)"; 
+		String exp="(5+6)*(7+8)/(4+3)(5+6)*(7+8)/(4+3)"; 
 		UtilityStack s=new UtilityStack();
 		char ch[]=exp.toCharArray();
-		for(int i=0;i<ch.length;i++)
+		int i=0;
+		for (i = 0; i < ch.length; i++) 
 		{
 			if(ch[i]=='(')
 				s.push(ch[i]);
@@ -17,6 +18,12 @@ public class StackExpression
 				s.pop();
 		}
 		boolean b=s.isEmpty();
-		System.out.println(b);
+		if(b==true && i==ch.length)
+		{
+			System.out.println("true");
+		}
+		else
+			System.out.println("false");
+	
 	}
 }

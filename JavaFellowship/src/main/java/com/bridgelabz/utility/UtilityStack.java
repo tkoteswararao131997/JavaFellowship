@@ -2,34 +2,50 @@ package com.bridgelabz.utility;
 
 public class UtilityStack 
 {
-	char pu[]=new char[20];
+	char a[]=new char[10];
 	int top=0;
-	public void push(char ch) 
+	public void push(char ch)
 	{
-		pu[top]=ch;
-		top++;
-	}
-	public void display(char[] s) 
-	{
-		for(char i : s)
+		if(top==a.length)
 		{
-			System.out.print(i+" ");
+			System.out.println("stack is full");
+		}
+		else
+		{
+		a[top]=ch;
+		top++;
 		}
 	}
 	public void pop()
 	{
+		if(isEmpty()==true)
+		{
+			System.out.println("stack is empty");
+		}
+		else
+		{
 		top--;
-		pu[top]='0';
+		a[top]=' ';
+		}
+	}
+	public char peek()
+	{
+		return a[top-1];
 	}
 	public boolean isEmpty()
 	{
-		for(int i=0;i<pu.length;i++)
-		{
-			if(pu[i]=='(')
-				return false;
-		}
-		return true;
+		return top<=0;
+	}
+	public int size()
+	{
+		return top;
 	}
 	
-		
+	public void show() 
+	{
+		for(char ch : a)
+		{
+			System.out.print(ch+" ");
+		}
+	}
 }
