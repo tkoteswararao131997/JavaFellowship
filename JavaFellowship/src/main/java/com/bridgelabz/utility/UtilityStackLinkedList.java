@@ -2,25 +2,35 @@ package com.bridgelabz.utility;
 
 public class UtilityStackLinkedList 
 {
-	UtilityLinkedList l=new UtilityLinkedList();
 	int top=0;
-	public void push(char c)
+	int range=15;
+	UtilityLinkedListChar l=new UtilityLinkedListChar();
+	public void push(char ch)
 	{
-		l.insertchar(c);
+		if(top<range)
+		{
+			l.insert(ch);
+			top++;
+		}
+	}
+	public void show()
+	{
+		l.show();
 	}
 	public void pop()
 	{
-		l.deletechar();
-	}
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	public void show() 
-	{
-		for (int i = 0; i < l.size(l); i++) 
+		top--;
+		if(top>=0)
 		{
-			System.out.println(l.get(l, i));
+			l.delete();
 		}
+	}
+	public boolean isEmpty()
+	{
+		return top<=0;
+	}
+	public int size()
+	{
+		return top;
 	}
 }
