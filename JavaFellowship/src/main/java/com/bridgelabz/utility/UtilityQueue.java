@@ -4,13 +4,14 @@ public class UtilityQueue
 {
 	UtilityLinkedListString l=new UtilityLinkedListString();
 	int range=3;
-	int front=0,rear=0;
+	int front=0,rear=0,capacity=0;
 	public void enqueue(String item)
 	{
 		if(rear<range)
 		{
 		rear=(rear+1)%range;
 		l.insert(item);
+		capacity++;
 		}
 		else
 			System.out.println("queue overflow");
@@ -21,26 +22,22 @@ public class UtilityQueue
 		{
 		l.delete();
 		front=(front+1)%range;
+		capacity--;
 		}
 		else
 			System.out.println("queue underflow");
+	}
+	public boolean isEmpty()
+	{
+		return capacity<=0;
+	}
+	public int size()
+	{
+		return capacity;
 	}
 	public void show()
 	{
 		l.display(l);
 		System.out.println("-------------------");
-	}
-	public static void main(String[] args) {
-		UtilityQueue q=new UtilityQueue();
-		UtilityLinkedListString l=new UtilityLinkedListString();
-		q.enqueue("Koti");
-		q.enqueue("firoz");
-		q.enqueue("hima");
-		q.enqueue("hello");
-		q.enqueue("hey");
-		q.dequeue();
-		q.show();
-		
-		
 	}
 }
