@@ -28,7 +28,7 @@ public class UtilityScanner
 	public static String readString()
 	{
 		System.out.println("enter string:");
-		return sc.nextLine();
+		return sc.next();
 	}
 	public static float readFloat()
 	{

@@ -122,5 +122,35 @@ public class UtilityLinkedListString
 			
 		}
 	}
+	public int index()
+	{
+		UtilityLinkedListString n=head;
+		int i=0;
+		while(n!=null)
+		{
+			i++;
+			n=n.next;
+		}
+		return i;
+	}
+	public void delete()
+	{
+		UtilityLinkedListString l=new UtilityLinkedListString();
+		int ind=l.index();
+		if(ind==0)
+			head=head.next;
+		else
+		{
+		UtilityLinkedListString n=new UtilityLinkedListString();
+		UtilityLinkedListString n1=null;
+		while(n.next!=null)
+		{
+			n=n.next;
+		}
+		n1=n.next;
+		n=n1.next;
+		}
+		
+	}
 	
 }
