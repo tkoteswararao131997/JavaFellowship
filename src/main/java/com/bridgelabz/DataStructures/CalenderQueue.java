@@ -42,5 +42,9 @@ public class CalenderQueue
 			q.enqueue(ch[i]);
 		}
 		q.showchar();
+		for(int i=1;i<32;i++)
+		{
+			q.enqueue(data);
+		}
 	}
 }
