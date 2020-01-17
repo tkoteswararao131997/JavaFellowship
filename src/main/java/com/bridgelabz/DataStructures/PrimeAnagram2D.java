@@ -1,8 +1,4 @@
 package com.bridgelabz.DataStructures;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.TreeSet;
 
 import com.bridgelabz.utility.UtilityLogics;
@@ -18,27 +14,7 @@ public class PrimeAnagram2D
 		int rows=10,cols=25,inc=100;
 		int anagramprimes[][]=new int[rows][cols];
 		int count=0;
-		
-		for (int i = 0; i < primes.length; i++) 
-		{
-			for (int j = i+1; j < primes.length; j++) 
-			{
-				boolean b=UtilityLogics.isAnagramInt(primes[i], primes[j]);
-				if(b==true)
-				{
-					result[count]=primes[i];
-					++count;
-					result[count]=primes[j];
-					++count;
-				}
-			}
-		}
-		TreeSet s=new TreeSet();
-	   for (int i = 0; i < count; i++) 
-	   {
-		s.add(result[i]);
-	   }
-	   Object check[]=s.toArray();
+		Object check[]=UtilityLogics.anagramsrange(anagramprimes,primes,result,count);
 	   int c=0;
 	   for (int i = 0; i < anagramprimes.length; i++) 
 	   {

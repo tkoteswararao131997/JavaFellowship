@@ -1189,7 +1189,11 @@ public static String[] insertionsort(String[] s)
 		}
 		return total;
 	}
-
+	/**
+	 * print prime numbers in a range in 2D array
+	 * @param range
+	 * @return integer 2D array
+	 */
 	public static int[][] PrimeRange2D(int range) 
 	{
 		int primes[]=UtilityLogics.primerange(range);
@@ -1214,6 +1218,38 @@ public static String[] insertionsort(String[] s)
 			System.out.println();
 		}
 		return primes2D;
+	}
+	/**
+	 * print anagrams in 2D in particular range
+	 * @param anagramprimes
+	 * @param primes
+	 * @param result
+	 * @param count
+	 * @return Object array
+	 */
+	public static Object[] anagramsrange(int[][] anagramprimes, int[] primes, int[] result, int count) 
+	{
+		for (int i = 0; i < primes.length; i++) 
+		{
+			for (int j = i+1; j < primes.length; j++) 
+			{
+				boolean b=UtilityLogics.isAnagramInt(primes[i], primes[j]);
+				if(b==true)
+				{
+					result[count]=primes[i];
+					++count;
+					result[count]=primes[j];
+					++count;
+				}
+			}
+		}
+		TreeSet s=new TreeSet();
+	   for (int i = 0; i < count; i++) 
+	   {
+		s.add(result[i]);
+	   }
+	   Object check[]=s.toArray();
+		return check;
 	}
 }
 
