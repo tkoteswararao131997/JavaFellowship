@@ -2,7 +2,7 @@ package com.bridgelabz.utility;
 
 public class LinkedList<T> {
 	Node head;
-	class Node {
+	class Node<T> {
 		T data;
 		Node next;
 
@@ -37,17 +37,16 @@ public class LinkedList<T> {
 		}
 		else
 		{
-			Node n=head;
-			Node pre=null;
-			while(n!=null)
+			Node<T> n=head;
+			Node<T> pre=null;
+			while(n.next!=null)
 			{
-				if(n.next.data.equals(item))
-				{
-					n=n.next;
+				if(n.next.data==item)
 					break;
-				}
 				n=n.next;
 			}
+			pre=n.next;
+			n.next=pre.next;
 			
 			
 		}
@@ -90,7 +89,7 @@ public class LinkedList<T> {
 		l.add("firoz");
 		l.add("hima");
 		l.add("bye");
-		l.remove("hima");
+		l.remove();
 		l.show();
 	}
 }
