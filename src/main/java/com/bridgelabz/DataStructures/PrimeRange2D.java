@@ -8,27 +8,16 @@ public class PrimeRange2D
 	public static void main(String[] args) 
 	{
 		int range=UtilityScanner.readInteger();
-		int primes[]=UtilityLogics.primerange(range);
-		int rows=10,cols=25;
-		int primes2D[][]=new int[rows][cols];
-		int count=0,inc=100;
-		for (int i = 0; i < rows; i++) 
+		int primes2D[][]=UtilityLogics.PrimeRange2D(range);
+		for (int i = 0; i < 10; i++) 
 		{
-			for (int j = 0; j < cols; j++) 
+			for (int j = 0; j < 25; j++) 
 			{
-//				System.out.println(i+" "+j);
-				if(count<primes.length)
-				{
-				if(primes[count]<=inc)
-				{
-				primes2D[i][j]=primes[count];
-				count++;
-				}
-				}
 				if(primes2D[i][j]!=0)
-				System.out.print(primes2D[i][j]+" ");
+				{
+					System.out.print(primes2D[i][j]+" ");
+				}
 			}
-			inc=inc+100;
 			System.out.println();
 		}
 	}

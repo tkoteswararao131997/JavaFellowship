@@ -928,7 +928,7 @@ public static String[] insertionsort(String[] s)
 	 * @param n2
 	 * @return true or false
 	 */
-	private static boolean isAnagramInt(int n1, int n2) 
+	public static boolean isAnagramInt(int n1, int n2) 
 	{
 		ArrayList l1=new ArrayList();
 		ArrayList l2=new ArrayList();
@@ -1188,6 +1188,32 @@ public static String[] insertionsort(String[] s)
 			}
 		}
 		return total;
+	}
+
+	public static int[][] PrimeRange2D(int range) 
+	{
+		int primes[]=UtilityLogics.primerange(range);
+		int rows=10,cols=25;
+		int primes2D[][]=new int[rows][cols];
+		int count=0,inc=100;
+		for (int i = 0; i < rows; i++) 
+		{
+			for (int j = 0; j < cols; j++) 
+			{
+//				System.out.println(i+" "+j);
+				if(count<primes.length)
+				{
+				if(primes[count]<=inc)
+				{
+				primes2D[i][j]=primes[count];
+				count++;
+				}
+				}
+			}
+			inc=inc+100;
+			System.out.println();
+		}
+		return primes2D;
 	}
 }
 
