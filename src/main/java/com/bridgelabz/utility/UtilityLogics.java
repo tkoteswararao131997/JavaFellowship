@@ -1251,5 +1251,62 @@ public static String[] insertionsort(String[] s)
 	   Object check[]=s.toArray();
 		return check;
 	}
+	/**
+	 * 
+	 * @param month
+	 * @param year
+	 */
+	public static void calender(int month, int year) 
+	{
+		int days;
+		if(month==1 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12)
+			days=31;
+		else if(month==2)
+		{
+			boolean b=isLeapYear(year); 
+			if(b==true)
+				days=29;
+			else
+				days=28;
+		}
+		else
+			days=30;
+		int d=1;
+		int y0 = year-(14 - month) / 12;
+		int x = y0 + y0/4-y0/100 + y0/400;
+		int m0 = month + 12 * ((14 - month) / 12) - 2;
+		int d0 = (d + x + 31*m0 / 12)% 7;
+		int result=d0;
+		int calender2D[][]=new int[5][7];
+		int count=1;
+		for (int i = 0; i < 5; i++) 
+		{
+			for (int j = 0; j < 7; j++)
+			{
+				while(result>0)
+				{
+					System.out.print("   ");
+					result--;
+					j++;
+				}
+				if(count<=days)
+				{
+					if(count<10)
+					{
+						System.out.print((calender2D[i][j]=count)+"  ");
+					}
+					else
+						System.out.print((calender2D[i][j]=count)+" ");
+				count++;
+				}
+			}
+			System.out.println();
+		}
+		
+
+		
+		
+		
+	}
 }
 
