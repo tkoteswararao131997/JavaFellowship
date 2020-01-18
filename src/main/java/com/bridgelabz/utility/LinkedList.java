@@ -7,10 +7,10 @@ public class LinkedList<T> {
 	 * adding data to linked list
 	 * @param input
 	 */
-	public void add(T input) {
-
+	public void add(T input) 
+	{
 		if (head == null) {
-			head = new Node<T>(input);
+			head = new Node(input);
 			return ;
 		}
 
@@ -90,7 +90,7 @@ public class LinkedList<T> {
 		Node<T> n=head;
 		while(n!=null)
 		{
-			System.out.println(n.data);
+			System.out.print(n.data+" ");
 			n=n.next;
 		}
 	}
@@ -274,18 +274,6 @@ public class LinkedList<T> {
 			item=n.data;
 			return item;
 		}	
-	}
-	public static void main(String[] args) 
-	{
-		LinkedList<String> l= new LinkedList<String>();
-		l.add("koti");
-		l.add("bk");
-		l.add("ahi");
-		l.add("cat");
-		l.add("hello");
-		l.add("zebra");
-		l.pop();
-		l.show();
 	}
 }
 

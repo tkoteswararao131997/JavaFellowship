@@ -2,7 +2,7 @@ package com.bridgelabz.utility;
 public class Queue<T> 
 {
 	LinkedList<T> l=new LinkedList<T>();
-	int range=5,capacity=0;
+	int range=50,capacity=0;
 	/**
 	 * insering element at last in queue
 	 * @param item

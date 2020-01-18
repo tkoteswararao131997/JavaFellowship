@@ -1,6 +1,10 @@
 
 package com.bridgelabz.utility;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Random;
+import java.util.TreeSet;
 /**Writing all my logics of all classes in this class
  * 
  * @author KOTI
@@ -1204,7 +1208,6 @@ public static String[] insertionsort(String[] s)
 		{
 			for (int j = 0; j < cols; j++) 
 			{
-//				System.out.println(i+" "+j);
 				if(count<primes.length)
 				{
 				if(primes[count]<=inc)

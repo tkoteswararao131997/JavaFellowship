@@ -30,7 +30,6 @@ public class StackExpressionLinkedList
 			if(ch[i]==')')
 				s.pop();
 		}
-		//System.out.println(open+" "+close);
 		boolean b=s.isEmpty();
 		if(b==true && i==ch.length)
 			System.out.println("true");

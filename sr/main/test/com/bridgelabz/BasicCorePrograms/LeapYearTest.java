@@ -13,7 +13,7 @@ class LeapYearTest {
 	{
 		UtilityLogics u=new UtilityLogics();
 		boolean b=u.isLeapYear(1987);
-		assertEquals(false,b);
+		assertEquals(true,b);
 	}
 	@Test
 	void test1() 
