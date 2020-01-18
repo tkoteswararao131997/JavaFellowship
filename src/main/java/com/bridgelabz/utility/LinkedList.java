@@ -253,21 +253,39 @@ public class LinkedList<T> {
 			n.next=new Node<T>(item);
 			n.next.next=temp;
 			
-		}
-			
+		}	
 		
 	}
-	public static void main(String[] args) 
+	public  T lastele()
 	{
-		LinkedList<String> l= new LinkedList<String>();
-		l.insertAt("koti");
-		l.insertAt("bk");
-		l.insertAt("ahi");
-		l.insertAt("cat");
-		l.insertAt("hello");
-		l.insertAt("zebra");
-		l.show();
+		T item;
+		if(head.next==null)
+		{
+			item=head.data;
+			return item;
+		}
+		else
+		{
+			Node<T> n=head;
+			while(n.next!=null)
+			{
+				n=n.next;
+			}
+			item=n.data;
+			return item;
+		}	
 	}
+//	public static void main(String[] args) 
+//	{
+//		LinkedList<String> l= new LinkedList<String>();
+//		l.insertAt("koti");
+//		l.insertAt("bk");
+//		l.insertAt("ahi");
+//		l.insertAt("cat");
+//		l.insertAt("hello");
+//		l.insertAt("zebra");
+//		l.show();
+//	}
 }
 
 

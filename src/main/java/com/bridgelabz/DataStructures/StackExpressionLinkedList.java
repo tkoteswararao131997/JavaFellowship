@@ -1,5 +1,6 @@
 package com.bridgelabz.DataStructures;
 
+import com.bridgelabz.utility.Stack;
 import com.bridgelabz.utility.UtilityLinkedListString;
 import com.bridgelabz.utility.UtilityStackLinkedList;
 
@@ -7,8 +8,8 @@ public class StackExpressionLinkedList
 {
 	public static void main(String[] args) 
 	{
-		String exp="(5+6)∗(7+8)/(4+3)(5+6)∗(7+8)/(4+3)";
-		UtilityStackLinkedList s=new UtilityStackLinkedList();
+		String exp="(5+6)∗(7+8)/(4+3)()()(5+6)∗(7+8)/(4+3)(";
+		Stack<Character> s=new Stack<Character>();
 		char ch[]=exp.toCharArray();
 		int i = 0;
 		for (i=0; i < ch.length; i++) 
