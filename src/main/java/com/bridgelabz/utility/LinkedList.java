@@ -224,15 +224,49 @@ public class LinkedList<T> {
 		}
 		return null;
 	}
+	/**
+	 * insert sorting wise
+	 * @param item
+	 */
+	public void insertAt(T item)
+	{
+		if(head==null)
+			head=new Node<T>(item);
+		else if((int)item.toString().charAt(0)<head.data.toString().charAt(0))
+		{
+			Node<T> temp=head;
+			head=new Node<T>(item);
+			head.next=temp;
+		}
+		else
+		{
+			Node<T> n=head;
+			while(n.next!=null)
+			{
+				if((int)item.toString().charAt(0)<n.next.data.toString().charAt(0))
+				{
+					break;
+				}
+				n=n.next;
+			}
+			Node<T> temp=n.next;
+			n.next=new Node<T>(item);
+			n.next.next=temp;
+			
+		}
+			
+		
+	}
 	public static void main(String[] args) 
 	{
 		LinkedList<String> l= new LinkedList<String>();
-		l.add("koti");
-		l.add("firoz");
-		l.add("karim");
-		l.add("sai");
-		l.add("guna");
-		System.out.println(l.search("guna"));
+		l.insertAt("koti");
+		l.insertAt("bk");
+		l.insertAt("ahi");
+		l.insertAt("cat");
+		l.insertAt("hello");
+		l.insertAt("zebra");
+		l.show();
 	}
 }
 
