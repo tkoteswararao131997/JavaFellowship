@@ -1,5 +1,6 @@
 package com.bridgelabz.DataStructures;
 
+import com.bridgelabz.utility.Queue;
 import com.bridgelabz.utility.UtilityLinkedListString;
 import com.bridgelabz.utility.UtilityQueue;
 import com.bridgelabz.utility.UtilityScanner;
@@ -9,7 +10,7 @@ public class BankingCashCounter
 	public static void main(String[] args) 
 	{
 		long balance=50000;
-		UtilityQueue q=new UtilityQueue();
+		Queue<String> q=new Queue<String>();
 		System.out.println("enter no.of users");
 		int users=UtilityScanner.readInteger();
 		String s="";

@@ -275,17 +275,18 @@ public class LinkedList<T> {
 			return item;
 		}	
 	}
-//	public static void main(String[] args) 
-//	{
-//		LinkedList<String> l= new LinkedList<String>();
-//		l.insertAt("koti");
-//		l.insertAt("bk");
-//		l.insertAt("ahi");
-//		l.insertAt("cat");
-//		l.insertAt("hello");
-//		l.insertAt("zebra");
-//		l.show();
-//	}
+	public static void main(String[] args) 
+	{
+		LinkedList<String> l= new LinkedList<String>();
+		l.add("koti");
+		l.add("bk");
+		l.add("ahi");
+		l.add("cat");
+		l.add("hello");
+		l.add("zebra");
+		l.pop();
+		l.show();
+	}
 }
 
 
