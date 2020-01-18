@@ -8,19 +8,29 @@ public class StackExpressionLinkedList
 {
 	public static void main(String[] args) 
 	{
-		String exp="(5+6)∗(7+8)/(4+3)()()(5+6)∗(7+8)/(4+3)(";
+		String exp="(5+6)∗(7+8)/(4+3)(5+6)∗(7+8)/(4+3)()";
 		Stack<Character> s=new Stack<Character>();
 		char ch[]=exp.toCharArray();
 		int i = 0;
+		int open=0,close=0;
 		for (i=0; i < ch.length; i++) 
 		{
+			if(ch[i]=='(')
+			{
+				open++;
+			}
+			else if(ch[i]==')')
+			{
+				close++;
+			}
+			if(close>open)
+				break;
 			if(ch[i]=='(')
 				s.push(ch[i]);
 			if(ch[i]==')')
 				s.pop();
-			if(s.size()==-1)
-				break;
 		}
+		//System.out.println(open+" "+close);
 		boolean b=s.isEmpty();
 		if(b==true && i==ch.length)
 			System.out.println("true");

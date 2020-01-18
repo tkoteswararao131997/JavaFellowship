@@ -10,7 +10,7 @@ public class Stack<T>
 	 */
 	public void push(T item)
 	{
-		if(range==size())
+		if(size()==range)
 			System.out.println("stack overflow");
 		else
 		{
@@ -29,8 +29,8 @@ public class Stack<T>
 		}
 		else
 		{
-			capacity--;
 			l.pop();
+			capacity--;
 		}
 	}
 	/**
@@ -47,23 +47,27 @@ public class Stack<T>
 	 */
 	public int size() 
 	{
-		//System.out.println(capacity);
-		return capacity-1;
+		return capacity;
 	}
 	public T peek()
 	{
 		return l.lastele();
 	}
+	public void show()
+	{
+		l.show();
+	}
 	public static void main(String[] args) 
 	{
 		Stack<Integer> s=new Stack<Integer>();
 		s.push(2);
-		s.push(3);
-		s.push(4);
-		s.push(20);
-		s.push(9);
+		s.push(21);
+		s.push(21);
+		s.push(21);
+		s.push(21);
+		s.push(21);
+		s.show();
 		System.out.println(s.size());
-		
 		
 	}
 }
