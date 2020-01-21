@@ -4,8 +4,8 @@ public interface InventryInterface
 {
 	public void addinventory();
 	public void showinventory();
-	public void calculateinventory();
+	public double calculateinventory();
 	public void removeinventory();
-	public void totalweight();
-	public void totalprice();
+	public double totalweight();
+	public double totalprice();
 }
