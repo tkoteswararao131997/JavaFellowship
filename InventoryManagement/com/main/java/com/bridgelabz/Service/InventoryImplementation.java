@@ -228,12 +228,7 @@ public class InventoryImplementation implements InventryInterface
 				e.printStackTrace();
 				}
 				break;
-			}
-				
-				
-				
-				
-		
+			}	
 	}
 	}
 }

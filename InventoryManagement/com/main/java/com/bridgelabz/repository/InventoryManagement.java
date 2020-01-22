@@ -14,6 +14,7 @@ import com.bridgelabz.model.DataAssign;
 public class InventoryManagement 
 {
 	InventoryImplementation imp=new InventoryImplementation();
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws IOException
 	{
 		DataAssign inventory=new DataAssign();
@@ -28,6 +29,7 @@ public class InventoryManagement
 		inv1.put("Inventory",obj);
 		JSONArray arr=new JSONArray();
 		arr.add(inv1);
+		System.out.println(arr);
 		FileWriter fw=new FileWriter("/home/user/InventoryDataManagement");
 		fw.write(arr.toString());
 		fw.close();
