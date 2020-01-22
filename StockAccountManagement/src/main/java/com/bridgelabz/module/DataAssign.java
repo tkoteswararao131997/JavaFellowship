@@ -5,12 +5,6 @@ public class DataAssign
 	private String stockname;
 	private int numberofshares;
 	private long shareprice;
-//	public DataAssign(String stockname,int numberofshare,long shareprice)
-//	{
-//		this.stockname=stockname;
-//		this.numberofshares=numberofshare;
-//		this.shareprice=shareprice;
-//	}
 	public String getStockname() {
 		return stockname;
 	}
