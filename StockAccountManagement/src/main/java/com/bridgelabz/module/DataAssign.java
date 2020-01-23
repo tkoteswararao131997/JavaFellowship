@@ -5,11 +5,11 @@ public class DataAssign
 	private String stockname;
 	private int numberofshares;
 	private long shareprice;
-	public String getStockname() {
+	public String getCompanyname() {
 		return stockname;
 	}
-	public void setStockname(String stockname) {
-		this.stockname = stockname;
+	public void setCompanyname(String companyname) {
+		this.stockname = companyname;
 	}
 	public long getShareprice() {
 		return shareprice;
@@ -25,6 +25,6 @@ public class DataAssign
 	}
 	public String toString()
 	{
-		return "stockname:"+stockname+",numberofshares:"+numberofshares+",shareprice:"+shareprice;
+		return "companyname:"+stockname+",numberofshares:"+numberofshares+",shareprice:"+shareprice;
 	}
 }

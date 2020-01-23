@@ -1,5 +1,6 @@
 package com.bridgelabz.service;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -9,6 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.bridgelabz.module.DataAssign;
 import com.bridgelabz.module.DataAssign;
 import com.bridgelabz.repository.LinkedList;
 import com.bridgelabz.repository.UtilityScanner;
@@ -23,10 +25,8 @@ public class StockImplentation implements StockInterface
 		for (int i = 0; i < arr.size(); i++) 
 		{
 			JSONObject obj=(JSONObject) arr.get(i);
-			System.out.println(obj);
-			String stockname=(String) obj.get("stockname");
-			System.out.println(stockname);
-			if(stockname.equalsIgnoreCase(particularstock))
+			String companyname=(String) obj.get("companyname");
+			if(companyname.equalsIgnoreCase(particularstock))
 			{
 			long  numberofshares=(long) obj.get("numberofshares");
 			long shareprice=(long) obj.get("shareprice");
@@ -54,11 +54,11 @@ public class StockImplentation implements StockInterface
 	{
 		try {
 			FileReader fr=new FileReader("/home/user/Desktop/Stock");
-			JSONParser pars=new JSONParser();
-			Object obj=pars.parse(fr);
-			JSONObject newobj=(JSONObject) obj;
-			System.out.println(newobj);
-			
+			JSONParser p=new JSONParser();
+			Object o=p.parse(fr);
+			JSONObject obj=(JSONObject) o;
+			JSONArray arr=(JSONArray) obj.get("companies");
+			return arr;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -87,15 +87,15 @@ public class StockImplentation implements StockInterface
 		for (int i = 0; i < arr.size(); i++) 
 		{
 			JSONObject obj=(JSONObject) arr.get(i);
-			String stockname=(String) obj.get("stockname");
-			if(stockname.equalsIgnoreCase(symbols))
+			String companyname=(String) obj.get("companyname");
+			if(companyname.equalsIgnoreCase(symbols))
 			{
 				long numberofshares=(long) obj.get("numberofshares");
 				numberofshares=numberofshares+amount;
 				long shareprice=(long)obj.get("shareprice");
 				arr.remove(i);
 				JSONObject newobj=new JSONObject();
-				newobj.put("stockname",stockname);
+				newobj.put("companyname",companyname);
 				newobj.put("numberofshares",numberofshares);
 				newobj.put("shareprice",shareprice);
 				arr.add(i,newobj);
@@ -106,7 +106,6 @@ public class StockImplentation implements StockInterface
 					fw.write(share.toString());
 					fw.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -122,15 +121,15 @@ public class StockImplentation implements StockInterface
 		for (int i = 0; i < arr.size(); i++) 
 		{
 			JSONObject obj=(JSONObject) arr.get(i);
-			String stockname=(String) obj.get("stockname");
-			if(stockname.equalsIgnoreCase(symbols))
+			String companyname=(String) obj.get("companyname");
+			if(companyname.equalsIgnoreCase(symbols))
 			{
 				long numberofshares=(long) obj.get("numberofshares");
 				numberofshares=numberofshares-amount;
 				long shareprice=(long)obj.get("shareprice");
 				arr.remove(i);
 				JSONObject newobj=new JSONObject();
-				newobj.put("stockname",stockname);
+				newobj.put("companyname",companyname);
 				newobj.put("numberofshares",numberofshares);
 				newobj.put("shareprice",shareprice);
 				arr.add(i,newobj);
@@ -154,65 +153,78 @@ public class StockImplentation implements StockInterface
 		for (int i = 0; i < arr.size(); i++) 
 		{
 			JSONObject obj=(JSONObject) arr.get(i);
-			String stockname=(String) obj.get("stockname");
+			JSONObject obj2=(JSONObject) obj.get("companies");
+			String companyname=(String) obj.get("companyname");
 			long numberofshares=(long) obj.get("numberofshares");
 			long shareprice=(long)obj.get("shareprice");
 			JSONObject newobj=new JSONObject();
-			System.out.println("stockname:"+stockname);
+			System.out.println("companyname:"+companyname);
 			System.out.println("numberofshares:"+numberofshares);
 			System.out.println("shareprice"+shareprice);
 			System.out.println();
 			}
 	}
+	@SuppressWarnings("unchecked")
 	public void addcompany()
 	{
-		DataAssign d=new DataAssign();
-		System.out.println("enter no.of shares");
-		int n=UtilityScanner.readInteger();
-		JSONArray arr=new JSONArray();
-		for (int i = 0; i < n; i++) 
+		File fr=new File("/home/user/Desktop/Stock");
+		boolean b=false;
+		if(fr.length()==0)
 		{
-			JSONObject obj1=new JSONObject();
-			System.out.println("enter stock name");
-			d.setStockname(UtilityScanner.readString());
-			obj1.put("stockname",d.getStockname());
-			d.setNumberofshare(UtilityScanner.readInteger());
-			obj1.put("numberofshares",d.getNumberofshare());
-			d.setShareprice(UtilityScanner.readLong());
-			obj1.put("shareprice",d.getShareprice());
-			arr.add(obj1);
-			if(i==n-1)
-			{
-			JSONObject newobj=new JSONObject();
-			newobj.put("companies",arr);
-			try {
-				FileWriter fw=new FileWriter("/home/user/Desktop/Stock");
-				fw.write(newobj.toString());
-				fw.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			b=true;
+			addcompanyhelper(b);
+		}
+		else
+		{
+			addcompanyhelper(b);
 		}
 	}
+	@SuppressWarnings("unchecked")
+	private void addcompanyhelper(boolean b) 
+	{
+		JSONArray arr=new JSONArray();
+		if(b==false)
+		{
+			arr=readfile();
+		}
+		DataAssign d=new DataAssign();
+		JSONObject obj1=new JSONObject();
+		System.out.println("enter company name");
+		d.setCompanyname(UtilityScanner.readString());
+		obj1.put("companyname",d.getCompanyname());
+		System.out.println("enter no.of shares");
+		d.setNumberofshare(UtilityScanner.readInteger());
+		obj1.put("numberofshares",d.getNumberofshare());
+		System.out.println("enter share price");
+		d.setShareprice(UtilityScanner.readLong());
+		obj1.put("shareprice",d.getShareprice());
+		arr.add(obj1);
+		JSONObject newobj=new JSONObject();
+		newobj.put("companies",arr);
+		try 
+		{
+			FileWriter fw=new FileWriter("/home/user/Desktop/Stock");
+			fw.write(newobj.toString());
+			fw.close();
+		} catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
+
+	@SuppressWarnings({"unchecked" })
 	public void deletecompany(String company)
 	{
-		LinkedList l=new LinkedList();
 		JSONArray arr=readfile();
 		for (int i = 0; i < arr.size(); i++) 
 		{
 			JSONObject obj=(JSONObject) arr.get(i);
-			String stockname=(String) obj.get("stockname");
-			l.add(stockname,i);
-			long numberofshares=(long) obj.get("numberofshares");
-			long shareprice=(long) obj.get("shareprice");
-			l.add(numberofshares,i);
-			l.add(shareprice,i);
+			String stockname=(String) obj.get("companyname");
+			if(stockname.equals(company))
+			{
+			arr.remove(i);
+			}
 		}
-		l.remove(company);
-		arr.remove(company);
 		JSONObject newobj=new JSONObject();
 		newobj.put("companies",arr);
 		try {
@@ -220,7 +232,6 @@ public class StockImplentation implements StockInterface
 			fw.write(newobj.toString());
 			fw.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
