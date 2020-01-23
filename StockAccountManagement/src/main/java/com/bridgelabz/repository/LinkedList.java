@@ -14,6 +14,7 @@ public class LinkedList<T>
 	Node[] arr=new Node[100];
 	public void add(T data,int index)
 	{
+		boolean b=false;
 		if(arr[index]==null)
 		{
 			arr[index]=new Node(data);
@@ -23,8 +24,14 @@ public class LinkedList<T>
 			Node n=arr[index];
 			while(n.next!=null)
 			{
+				if(n.data.equals(data))
+				{
+					b=true;
+					break;
+				}
 				n=n.next;
 			}
+			if(b==false)
 			n.next=new Node(data);
 		}
 	}
@@ -55,5 +62,9 @@ public class LinkedList<T>
 				break;
 			}
 		}
+	}
+	public Object indexstart(int j)
+	{
+		return arr[j].data;
 	}
 }

@@ -16,8 +16,9 @@ import com.bridgelabz.repository.LinkedList;
 import com.bridgelabz.repository.UtilityScanner;
 
 public class StockImplentation implements StockInterface 
-{
-
+{	
+	LinkedList l=new LinkedList();
+	int i=0;
 	@Override
 	public double eachstockval(String particularstock) 
 	{
@@ -198,6 +199,12 @@ public class StockImplentation implements StockInterface
 		System.out.println("enter share price");
 		d.setShareprice(UtilityScanner.readLong());
 		obj1.put("shareprice",d.getShareprice());
+		linkedlist();
+		l.add(d.getCompanyname(),i);
+		l.add(d.getNumberofshare(),i);
+		l.add(d.getShareprice(),i);
+//		l.show();
+		i++;
 		arr.add(obj1);
 		JSONObject newobj=new JSONObject();
 		newobj.put("companies",arr);
@@ -216,13 +223,17 @@ public class StockImplentation implements StockInterface
 	public void deletecompany(String company)
 	{
 		JSONArray arr=readfile();
-		for (int i = 0; i < arr.size(); i++) 
+		for (int k = 0; k < arr.size(); k++) 
 		{
-			JSONObject obj=(JSONObject) arr.get(i);
+			JSONObject obj=(JSONObject) arr.get(k);
 			String stockname=(String) obj.get("companyname");
+			System.out.println("out");
 			if(stockname.equals(company))
 			{
-			arr.remove(i);
+			linkedlist();
+			l.remove(stockname);
+			i--;
+			arr.remove(k);
 			}
 		}
 		JSONObject newobj=new JSONObject();
@@ -234,7 +245,31 @@ public class StockImplentation implements StockInterface
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
+	}
+	public LinkedList linkedlist()
+	{
+		JSONArray arr=readfile();
+		for (int j = 0; j < arr.size(); j++) 
+		{
+			JSONObject obj=(JSONObject) arr.get(j);
+			String companyname=(String) obj.get("companyname");
+			long numberofshares=(long) obj.get("numberofshares");
+			long shareprice=(long)obj.get("shareprice");
+			l.add(companyname, j);
+			l.add(numberofshares,j);
+			l.add(shareprice,j);
+			i=j+1;
+		}
+		return l;
+	}
+	public LinkedList linkedliststack(LinkedList l)
+	{
+		for (int j = 0; j < i ; j++) 
+		{
+			System.out.println("enter symbol for "+l.indexstart(j));
+			String s=UtilityScanner.readString();
+			l.add(s,j);
+		}
+		return l;
 	}
 }

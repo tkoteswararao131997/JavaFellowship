@@ -13,7 +13,7 @@ public class Main
 	public static void main(String[] args)
 	{
 		StockImplentation s=new StockImplentation();
-	
+		
 		boolean traverse=true;
 		System.out.println("1.view particular company value 2.value of total companies 3.buy company share\n"
 				+ "4.sell company share 5.add company 6.delete companny\n 7.print report 8.exit");
@@ -48,6 +48,7 @@ public class Main
 				break;
 		case 6:System.out.println("enter company name to delete");	
 				s.deletecompany(UtilityScanner.readString());
+				System.out.println("successfully deleted");
 				break;
 		case 7:s.printreport();
 				break;
@@ -57,6 +58,13 @@ public class Main
 		default :System.out.println("enter correct choice");
 					break;
 		}
+		System.out.println("stored in linked list");
+		LinkedList l=s.linkedlist();
+		l.show();
+		System.out.println("symbol status with stack");
+		l=s.linkedliststack(l);
+		l.show();
+		
 	}
 }
 }
