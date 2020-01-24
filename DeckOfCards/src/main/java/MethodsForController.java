@@ -9,6 +9,8 @@ public class MethodsForController implements MethodsInterface
 	String rank[]= {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
 	String players[]= {"p1","p2","p3","p4"};
 	String storage[]=new String[36];
+	String cards[][]=new String[4][9];
+	String sortcards[][]=new String[4][9];
 	@Override
 	public void setcardsToPlayers() 
 	{
@@ -71,7 +73,7 @@ public class MethodsForController implements MethodsInterface
 	public void arrangein2D(String[] storage) 
 	{
 		int i=0,j=0,k=0;
-		String cards[][]=new String[4][9];
+		
 		while(j<4)
 		{
 		i=j;
@@ -90,6 +92,33 @@ public class MethodsForController implements MethodsInterface
 			for (int l2 = 0; l2 < 9; l2++) 
 			{
 				System.out.print(cards[l][l2]+" ");
+			}
+			System.out.println();
+		}
+	}
+	public void sortcardsqueue() 
+	{
+		for (int i = 0; i < 4; i++) 
+		{
+			Queue<String> q=new Queue<String>();
+			for (int j = 0; j < 9; j++) 
+			{
+				q.sortinsert(cards[i][j]);
+			}
+			for (int j = 0; j < 9; j++) 
+			{
+				sortcards[i][j]=q.dequeue(0);
+			}
+		}
+	}
+	public void displaysortcards() 
+	{
+		for (int l = 0; l < cards.length; l++) 
+		{
+			System.out.print(players[l]+"-------->");
+			for (int l2 = 0; l2 < 9; l2++) 
+			{
+				System.out.print(sortcards[l][l2]+" ");
 			}
 			System.out.println();
 		}
