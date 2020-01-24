@@ -13,7 +13,7 @@ import org.json.simple.parser.JSONParser;
 import com.bridgelabz.module.CliniqueDoctorData;
 import com.bridgelabz.module.CliniquePatientData;
 import com.bridgelabz.repository.UtilityScanner;
-
+import java.time.format.DateTimeFormatter;  
 public class CliniqueMethodsImplementation implements CliniqueMethodsInterface 
 {
 
@@ -86,8 +86,8 @@ public class CliniqueMethodsImplementation implements CliniqueMethodsInterface
 	@Override
 	public boolean searchDoctor(String anything) 
 	{
-		int j=0;
 		boolean b=false;
+		int j=0;
 		JSONArray arr=readfiledoctor();
 		for (int i = 0; i < arr.size(); i++) 
 		{
@@ -100,14 +100,13 @@ public class CliniqueMethodsImplementation implements CliniqueMethodsInterface
 			{
 				j++;
 				System.out.println("doctor details:");
-				System.out.println("name:"+name+",id:"+id+",specialization:"+specialization+",avaliability:"+avaliability);
+				System.out.println("name:"+name+",id:"+id+",mobilenumber:"+specialization+",avaliability:"+avaliability);
 				b=true;
 			}
 			else
 			{
 				if(i==arr.size()-1 && j==0)
-				System.out.println("no doctors found");
-				return b;
+				System.out.println("no patients found");
 			}
 			
 		}
@@ -208,6 +207,7 @@ public class CliniqueMethodsImplementation implements CliniqueMethodsInterface
 	public void appointment(String anything, String patient) 
 	{
 		boolean b=searchDoctor(anything);
+		System.out.println(b);
 		JSONArray arr=readfiledoctor();
 		if(b==true)
 		{
@@ -219,21 +219,21 @@ public class CliniqueMethodsImplementation implements CliniqueMethodsInterface
 				if(name.equals(anything))
 				{
 					long app=(long) obj.get("appointments");
-					if(app<6)
-					{
-					app=app+1;
-					System.out.println(app);
-					}
 					File f=new File("/home/user/Desktop/appointment.json");
 					if(f.length()==0)
 					{
 						JSONObject appointment=new JSONObject();
-						appointment.put(name, p);
-						try {
+						JSONArray arr2=new JSONArray();
+						arr2.add(p);
+						appointment.put(name, arr2);
+						
+						try 
+						{
 							FileWriter fw=new FileWriter("/home/user/Desktop/appointment.json");
 							fw.write(appointment.toString());
 							fw.close();
-						} catch (IOException e) {
+						} catch (IOException e)
+						{
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
@@ -241,29 +241,106 @@ public class CliniqueMethodsImplementation implements CliniqueMethodsInterface
 					}
 					else
 					{
-						try {
+						try 
+						{
 							FileReader fr=new FileReader("/home/user/Desktop/appointment.json");
 							JSONParser pars=new JSONParser();
 							Object obj2=pars.parse(fr);
 							JSONObject obj3=(JSONObject) obj2;
-							obj3.put(name,p);
-							try {
+							boolean namechecker=check(name,p);
+							boolean appointmentsize=checkappointmentsize(name);
+							if(namechecker==false && appointmentsize==true)
+							{
+							JSONArray arr3=(JSONArray) obj3.get(name);
+							arr3.add(p);
+							obj3.put(name,arr3);
+							app=app+1;
+							try 
+							{
 								FileWriter fw=new FileWriter("/home/user/Desktop/appointment.json");
 								fw.write(obj3.toString());
 								fw.close();
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
+							} 
+							catch (IOException e) 
+							{
 								e.printStackTrace();
 							}
 							
-						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+							}
+							else
+							{
+								System.out.print("doctor "+name+" is so busy u will get appointment on tommorrow ");
+								System.out.println(java.time.LocalDate.now());  
+							}
+							}
+							 catch (Exception e) 
+								{
+								e.printStackTrace();
+								}
 						}
-					}
-				}
 			}
 		}
 	}
-	
+}
+	private boolean check(String name,String pat) 
+	{
+		boolean b=false;
+		try {
+			FileReader fr=new FileReader("/home/user/Desktop/appointment.json");
+			JSONParser p=new JSONParser();
+			Object obj=p.parse(fr);
+			JSONObject obj2=(JSONObject) obj;
+			Object name2="";
+			for(int m=0;m<obj2.size();m++)
+			{
+				name2=(Object)obj2.get(name);
+			}
+			if(name2==null)
+			{		
+				System.out.println("in");
+				b=true;
+				JSONArray arr2=new JSONArray();
+				arr2.add(pat);
+				System.out.println(arr2);
+				obj2.put(name, arr2);
+				
+				try {
+					FileWriter fw=new FileWriter("/home/user/Desktop/appointment.json");
+					fw.write(obj2.toString());
+					fw.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return b;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return b;
+	}
+	public boolean checkappointmentsize(String name)
+	{
+		try 
+		{
+			FileReader fr=new FileReader("/home/user/Desktop/appointment.json");
+			JSONParser p=new JSONParser();
+			Object obj=p.parse(fr);
+			JSONObject obj2=(JSONObject) obj;
+			for(int m=0;m<obj2.size();m++)
+			{
+				JSONArray arr=(JSONArray) obj2.get(name);
+				if(arr.size()==5)
+				{
+					return false;
+				}
+			}
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		return true;
+	}
 }
