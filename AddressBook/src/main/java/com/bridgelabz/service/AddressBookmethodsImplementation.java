@@ -213,24 +213,21 @@ public class AddressBookmethodsImplementation implements AddressBookMethodsInter
 		JSONObject obj2=new JSONObject();
 		for (int i = 0; i < arr.size(); i++) 
 		{
-			obj=(JSONObject) arr.get(i);
-			String iname=(String) obj.get("lastname");
-			for (int j = 0; j < arr.size(); j++) 
+			for (int j = 0; j < arr.size()-1-i; j++) 
 			{
-				obj2=(JSONObject) arr.get(j);
-				String jname=(String) obj2.get("lastname");
-				if(iname.compareTo(jname)>0)
+				obj=(JSONObject) arr.get(j);
+				obj2=(JSONObject)arr.get(j+1);
+				String objname=(String) obj.get("lastname");
+				String obj2name=(String)obj2.get("lastname");
+				if(objname.compareTo(obj2name)>0)
 				{
-					System.out.println("in");
-					JSONObject temp=(JSONObject) arr.get(i);
-					System.out.println(temp);
-					System.out.println(i+" "+j);
-					arr.add(i, obj2);
-					System.out.println(arr);
-					arr.add(j, temp);
-					System.out.println(arr);
+					JSONObject temp=obj;
+					arr.remove(j);
+					arr.add(j, obj2);
+					arr.remove(j+1);
+					arr.add(j+1,obj);
 				}
-				
+				//System.out.println(obj+"\n"+obj2);
 			}
 		}
 		JSONObject book=new JSONObject();
@@ -248,15 +245,63 @@ public class AddressBookmethodsImplementation implements AddressBookMethodsInter
 	}
 
 	@Override
-	public void sortzipcodes() {
-		// TODO Auto-generated method stub
-		
+	public void sortzipcodes() 
+	{
+		JSONArray arr=readfile();
+		JSONObject obj=new JSONObject();
+		JSONObject obj2=new JSONObject();
+		for (int i = 0; i < arr.size(); i++) 
+		{
+			for (int j = 0; j < arr.size()-1-i; j++) 
+			{
+				obj=(JSONObject) arr.get(j);
+				obj2=(JSONObject)arr.get(j+1);
+				String objname=(String) obj.get("zip");
+				String obj2name=(String)obj2.get("zip");
+				if(objname.compareTo(obj2name)>0)
+				{
+					JSONObject temp=obj;
+					arr.remove(j);
+					arr.add(j, obj2);
+					arr.remove(j+1);
+					arr.add(j+1,obj);
+				}
+				//System.out.println(obj+"\n"+obj2);
+			}
+		}
+		JSONObject book=new JSONObject();
+		book.put("address book",arr);
+		try 
+		{
+			FileWriter fw=new FileWriter("/home/user/Desktop/AddressBook.json");
+			fw.write(book.toString());
+			fw.close();
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public void printpersons() {
-		// TODO Auto-generated method stub
-		
+	public void printpersons() 
+	{
+		JSONArray arr=readfile();
+		for (int i = 0; i < arr.size(); i++) 
+		{
+			JSONObject obj=(JSONObject) arr.get(i);
+			String firstname=(String) obj.get("firstname");
+			String lastname=(String) obj.get("lastname");
+			String address=(String) obj.get("address");
+			String city=(String) obj.get("city");
+			String state=(String) obj.get("state");
+			String zip=(String) obj.get("zip");
+			String mobilenumber=(String) obj.get("mobilenumber");
+			System.out.println(firstname+" details----->");
+			System.out.println("firstname:"+firstname+"\nlastname:"+lastname+"\naddress:"+address+"\ncity:"+city+"\nstate:"+state+"\nzip:"+zip+"\nmobilenumber:"+mobilenumber);
+			System.out.println("....................................................................................................................");
+			System.out.println();
+		}
 	}
 	
 }

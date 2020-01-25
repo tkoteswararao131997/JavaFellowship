@@ -31,7 +31,17 @@ public class AddressBookMain
 					System.out.println("successfully deleted");
 					break;
 			case 4:a.sortlastnames();
-					System.out.println("successfully sorted");
+					System.out.println("successfully sorted using lastnames");
+					break;
+			case 5:a.sortzipcodes();
+					System.out.println("successfully sorted using zipcodes");
+					break;
+			case 6:a.printpersons();
+					break;
+			case 7:b=false;
+					System.out.println("gud bye");
+					break;
+			default:System.out.println("enter correct choice");
 					break;
 			}
 		}
