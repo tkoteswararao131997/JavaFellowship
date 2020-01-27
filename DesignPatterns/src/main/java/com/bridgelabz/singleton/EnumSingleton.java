@@ -1,5 +1,11 @@
 package com.bridgelabz.singleton;
-
+/**
+ * enum is a special type of class which creates single object called INSTANCE.In enum it had inbuilt private constructor
+ *  which assigning class instance as INSTANCE.
+ * @author user
+ * problem:it doesnt support for lazy singleton.because in lazy singleton we initializing in main method byt here INSTANCE is already created.
+ *
+ */
 public enum EnumSingleton 
 {
 	INSTANCE;
