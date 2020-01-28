@@ -1,5 +1,9 @@
 package co.bridgelabz.AdapterDesign;
-
+/**
+ * AdapterDesign:-one object witch behaving like a bridge between two unliked objects.
+ * @author user
+ *
+ */
 public class AdapterRunner {
 
 	public static void main(String[] args) 
