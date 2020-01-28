@@ -1,40 +1,72 @@
 package com.bridgelabz.PrototypeDesign;
-
+/**
+ * Prototype:-it is a process of cloning the object without accessing database data everytime then we can save time time and costly resources like data also.
+ * In cloning there are 2 types 1.shalow cloning 2.Deep cloning.
+ */
 import java.util.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Employees implements Cloneable
 {
-
-	private List<String> empList;
-	
-	public Employees(){
-		empList = new ArrayList<String>();
+	private List<String> emplist=new ArrayList<String>();
+	/**
+	 * getting employee value to linkedlist
+	 * @return
+	 */
+	public List<String> getEmplist() {
+		return emplist;
 	}
-	
-	public Employees(List<String> list){
-		this.empList=list;
+	/**
+	 * setting employee value to linkedlist
+	 * @param emplist
+	 */
+	public void setEmplist(List<String> emplist) {
+		this.emplist = emplist;
 	}
+	/**
+	 * put data into employee linkedlist
+	 */
 	public void loadData()
 	{
-		empList.add("koti");
-		empList.add("karim");
-		empList.add("firoz");
-		empList.add("hima");
+		emplist.add("koti");
+		emplist.add("firoz");
+		emplist.add("naveen");
+		emplist.add("hima");
+		emplist.add("sai");
 	}
-	
-	public List<String> getEmpList() {
-		return empList;
-	}
-
+	/**
+	 * Deep cloning:-which doesn't effect the other object after cloning for this we can override the clone method
+	 * and we can implement ourself.
+	 */
 	@Override
-	public Object clone() throws CloneNotSupportedException{
-			List<String> temp = new ArrayList<String>();
-			for(String s : this.getEmpList()){
-				temp.add(s);
-			}
-			return new Employees(temp);
+	protected Employees clone() throws CloneNotSupportedException 
+	{
+		Employees e=new Employees();
+		for(String e1 : getEmplist())
+		{
+			e.getEmplist().add(e1);
+		}
+		return e;
+		
+	}
+	public static void main(String[] args) throws CloneNotSupportedException
+	{
+		Employees e=new Employees();
+		e.loadData();
+		/**
+		 * shalow cloning:-if we delete any element after cloning it will effect other object also.
+		 * cloning data into another object
+		 * @param args
+		 */
+		Employees e1=new Employees();
+		e1=e.clone();
+		System.out.println("-----------before removing any element in original object---------------");
+		System.out.println(e.emplist);
+		System.out.println(e1.emplist);
+		e.emplist.remove(3);
+		System.out.println("-----------after removing any element in original object---------------");
+		System.out.println(e.emplist);
+		System.out.println(e1.emplist);
+		
+		
 	}
 }
