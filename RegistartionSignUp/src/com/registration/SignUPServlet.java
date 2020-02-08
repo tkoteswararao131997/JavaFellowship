@@ -30,9 +30,7 @@ public class SignUPServlet extends HttpServlet {
 				st.setString(3, email);
 				st.setString(4, mobilenumber);
 				st.executeUpdate();
-				PrintWriter out = response.getWriter();
-				out.println("successfully registered");
-				response.sendRedirect("login.jsp");
+				response.sendRedirect("	welcome.jsp");
 				st.close();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

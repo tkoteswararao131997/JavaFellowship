@@ -1,0 +1,9 @@
+@charset "UTF-8";
+body{
+	background-image: url("loginbg.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+h1,h2{
+	color:#6600cc;
+}
