@@ -1,8 +1,7 @@
-package com.filters;
+package com.model;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.http.HttpRequest;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -13,29 +12,32 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebFilter("/signup")
-public class NameFilter implements Filter {
+@WebFilter("/resources/jsp/signup")
+public class PasswordFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req=(HttpServletRequest) request;
 		HttpServletResponse res=(HttpServletResponse) response;
 		PrintWriter out=res.getWriter();
-		String fullname=req.getParameter("fullname");
-		if(fullname.length()>3 && fullname.matches("^[a-zA-Z]*$"))
+		String pwd=req.getParameter("password");
+		if(pwd.length()>7 && pwd.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$"))
 		{
-			chain.doFilter(request, response);
+		chain.doFilter(request, response);
 		}
 		else
 		{
-			out.println("name must above 3 characters and not with integers(0-9)");
+			out.println("password must be combination of(1special 1uppercase 1lowercase 1numeric");
 		}
-		
 	}
-	@Override
-	public void init(FilterConfig arg0) throws ServletException {
-		
-	}
+
 	@Override
 	public void destroy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+		// TODO Auto-generated method stub
 		
 	}
 }

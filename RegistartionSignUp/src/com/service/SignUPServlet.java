@@ -1,4 +1,4 @@
-package com.registration;
+package com.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/signup")
+@WebServlet("/resources/jsp/signup")
 public class SignUPServlet extends HttpServlet {
-	public void doPost(HttpServletRequest request, HttpServletResponse response) {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String uname = request.getParameter("fullname");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
@@ -30,13 +30,13 @@ public class SignUPServlet extends HttpServlet {
 				st.setString(3, email);
 				st.setString(4, mobilenumber);
 				st.executeUpdate();
-				response.sendRedirect("	welcome.jsp");
 				st.close();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		response.sendRedirect("welcome.jsp");
 
 	}
 }

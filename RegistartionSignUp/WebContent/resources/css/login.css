@@ -13,7 +13,7 @@ label {
 	align-content: center;
 	position: relative;
 	margin-right: 16px;
-	left: 70px;
+	left: 100px;
 	top: 10px;
 }
 
@@ -29,7 +29,7 @@ h1 {
 body {
 	background-color: #d1d1e0;
 	font-style: italic;
-	background-image: url("loginbg.jpg");
+	background-image: url("../images/loginbg.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 }

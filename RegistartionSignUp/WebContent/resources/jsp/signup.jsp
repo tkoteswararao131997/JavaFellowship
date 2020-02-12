@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>signup page</title>
-<link rel="stylesheet" type="text/css" href="login.css">
+<link rel="stylesheet" type="text/css" href="../css/login.css">
 </head>
 <body>
 	<form action="signup" method="post">

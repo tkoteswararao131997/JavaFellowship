@@ -5,7 +5,7 @@ table{
 	background-color: #ccffff;
 }
 body{
-	background-image: url("cropfinal.jpg");
+	background-image: url("../images/cropfinal.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 }

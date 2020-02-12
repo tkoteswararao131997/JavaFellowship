@@ -1,4 +1,4 @@
-package com.filters;
+package com.model;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebFilter("/signup")
+@WebFilter("/resources/jsp/signup")
 public class MobileFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req=(HttpServletRequest) request;
